@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+:root{
+    --text: #080604;
+    --background: #F9F5F3;
+    --tile-color: #F1EDEB;
+    --primary: #b87148;
+    --secondary: #dfb59c;
+    --accent: #d58d63;
+
+    --text-filter: invert(99%) sepia(0%) saturate(5792%) hue-rotate(317deg) brightness(129%) contrast(82%);
+}
+
+body{
+    background-color: var(--background);
+    min-height: 100vh;
+}
+
+header{
+    /* position */
+    display: flex;
+    height: 100px;
+    background-color: var(--accent);
+}   
+
+main{
+}   
+
+.library-container{
+    padding: 32px 16vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,280px));
+    grid-gap: 48px;
+}
+
+.tile{
+    border: 1px red solid;
+    height: 300px;
+}
