@@ -134,12 +134,28 @@ function checkLibrary(library){
 function addBookTile(){
     const bookTile = document.createElement('div')
     bookTile.classList.add('add-book', 'tile')
-    const addBookBtn = document.createElement('button')
-    addBookBtn.classList.add("add-new-book")
-    addBookBtn.textContent = "Add New Book"
+    const plusIcon = document.createElement('div')
+    plusIcon.setAttribute('id','plus-icon')
+    const plusImg = document.createElement('img')
+    plusImg.setAttribute('id','plus-svg')
+    plusImg.src = `assets/svg/plus-circle-outline.svg`
+    const addBookTxt = document.createElement('div')
+    addBookTxt.setAttribute('id','add-book-txt')
+    addBookTxt.textContent = 'Add Book'
 
+    // const addBookBtn = document.createElement('button')
+    // addBookBtn.classList.add("add-new-book")
+    // addBookBtn.textContent = "Add New Book"
+    plusIcon.appendChild(plusImg)
+    bookTile.appendChild(plusIcon)
+    bookTile.appendChild(addBookTxt)
     libraryContainer.appendChild(bookTile)
-    bookTile.appendChild(addBookBtn)
+
+
+    bookTile.addEventListener('click',function(e){
+        console.log(e);
+    })
+    // bookTile.appendChild(addBookBtn)
 }
 
 

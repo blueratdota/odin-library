@@ -52,6 +52,22 @@
             </div>
         </div>
     </main>
+    <div class="modal hidden">
+        <form class="add-form" action="">
+            <h2>Add New Book</h2>
+            <input class="input" type="text" id="title" placeholder="Title" required="" maxlength="100">
+            <p id="error-msg">pota</p>
+            <input class="input" type="text" id="author" placeholder="Author" required="" maxlength="100">
+            <input class="input" type="number" id="pages" placeholder="Pages" required="" max="10000">
+            <div class="check-read" >
+                <label for="check-read">Have you read this book?</label>
+                <input class="checkbox" type="checkbox" id="read-status">
+            </div>
+            <button class="submit-btn" type="submit">Submit</button>
+        </form>
+
+    </div>
+    <div class="overlay hidden"></div>
     <footer></footer>
 </body>
 </html>
