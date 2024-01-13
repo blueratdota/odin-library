@@ -9,15 +9,18 @@
 </head>
 <body>
     <header>
-        <h1>Odin Library</h1>
-        <div>
+        <div class="left">
+            <img src="assets/images/odin-lined.png" alt="">
+            <h1>Odin Library</h1>
+        </div>
+        <div class="right">
             <button>Account</button>
             <button>Log In</button>
         </div>
     </header>
     <main>
         <div class="library-container">
-            <div class="book tile">
+            <!-- <div class="book tile">
                 <div class="description">
                     <h2>Book Title 1</h2>
                     <h3>Author 1</h3>
@@ -26,34 +29,11 @@
                 <div class="actions">
                     <button>Read</button>   
                     <button>Remove</button>
-                </div>   
-            </div>
-            <div class="book tile">
-                <div class="description">
-                    <h2>Book Title 1</h2>
-                    <h3>Author 1</h3>
-                    <p>300</p>
-                </div>
-                <div class="actions">
-                    <button>Read</button>
-                    <button>Remove</button>
-                </div>   
-            </div>
-            <div class="book tile">
-                <div class="description">
-                    <h2>Book Title 1</h2>
-                    <h3>Author 1</h3>
-                    <p>300</p>
-                </div>
-                <div class="actions">
-                    <button>Read</button>
-                    <button>Remove</button>
-                </div>   
-            </div>
+                </div> -->
         </div>
     </main>
     <div class="modal hidden">
-        <form class="add-form" action="">
+        <form class="add-form" action="" onsubmit="return false">
             <h2>Add New Book</h2>
             <input class="input" type="text" id="title" placeholder="Title" required="" maxlength="100">
             <p id="error-msg">pota</p>
@@ -70,4 +50,5 @@
     <div class="overlay hidden"></div>
     <footer></footer>
 </body>
+
 </html>

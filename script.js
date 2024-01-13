@@ -1,7 +1,41 @@
 console.log('hello world - odin library');
 
 const libraryContainer = document.querySelector('.library-container')
-let myLibrary = []
+const modal = document.querySelector('.modal')
+const overlay = document.querySelector('.overlay')
+const submitBtn = document.querySelector('.submit-btn')
+const addTitle = document.querySelector('#title')
+const addAuthor = document.querySelector('#author')
+const addPages = document.querySelector('#pages')
+const addRead = document.querySelector('#read-status')
+
+
+// SAMPLE BOOKS
+const jjk = new Book('Jujutsu Kaisen','Gege Akutami', 1000, 'not done')
+const got = new Book('A Song of Ice and Fire','George R.R. Martin',500,'done')
+const aot = new Book('Attack on Titan','Hajime Isayama',999,'not done')
+
+let myLibrary = [];
+
+overlay.addEventListener('click',function(){
+    toggleModal()
+})
+
+submitBtn.addEventListener('click',function(e){
+    let readStatus = ''
+    if (addRead.checked == true){
+        readStatus = 'done'
+    }
+    else{
+        readStatus = 'not done'
+    }
+    const newBook = new Book(`${addTitle.value}`,`${addAuthor.value}`,`${addPages.value}`,readStatus)
+    addBookToLibrary(newBook)
+    checkLibrary(myLibrary)
+    toggleModal()
+    clearAddForm()
+    e.preventDefault();
+})
 
 function Book(title,author,pages,status){
     this.title = title
@@ -15,48 +49,20 @@ function addBookToLibrary(constBook){
     myLibrary.unshift(constBook)
 }
 
-// =====ADDED THIS FUNCTION TO THE BUTTON CREATION ITSELF=====
-// function addBtnFunction(){
-//     for(let i=0; i<statusButton.length; i++){
-//         statusButton[i].addEventListener('click',function(e){
-//             // console.log(statusButton[i].textContent);
-//             if(statusButton[i].textContent == "Read"){
-//                 statusButton[i].textContent = "Not Read"
-//                 statusButton[i].classList.add("not-read")
-//                 statusButton[i].classList.remove("read")
-//             }
-//             else if(statusButton[i].textContent == "Not Read"){
-//                 statusButton[i].textContent = "Read"
-//                 statusButton[i].classList.add("read")
-//                 statusButton[i].classList.remove("not-read")
-//             }
-//         })
-       
-//     }
-//     for (let i=0; i<removeButton.length; i++){
-//         removeButton[i].addEventListener('click', function(e){
-//             console.log(e);
-//         })
-//     }
-// }
-
-function clearLibrary(){
-    for (let i in library){
-        
-    }
+function toggleModal(){
+    modal.classList.toggle('hidden')
+    overlay.classList.toggle('hidden')
 }
 
-let statusButton =''
-let removeButton =''
+function clearAddForm(){
+    addTitle.value = ''
+    addAuthor.value = ''
+    addPages.value = ''
+    addRead.checked = false
+}
 
 function checkLibrary(library){
     for (let i in library){
-        console.log(library[i].title);
-        console.log(library[i].author);
-        console.log(library[i].pages);
-        console.log(library[i].status);
-        console.log(library[i].added);
-        console.log('=====end=====');
 
         if(library[i].added!='added'){
             library[i].added = 'added'
@@ -69,10 +75,10 @@ function checkLibrary(library){
             const bookAuthor = document.createElement('h3')
             bookAuthor.textContent = library[i].author
             const bookPages = document.createElement('p')
-            bookPages.textContent = library[i].pages
+            bookPages.textContent = library[i].pages + ' pages'
 
             const actions = document.createElement('div')
-            description.classList.add("actions")
+            actions.classList.add("actions")
 
             // ADD BUTTON
             const statusBtn = document.createElement('button')
@@ -124,11 +130,7 @@ function checkLibrary(library){
             bookTile.appendChild(actions)
         }   
     }
-    // statusButton = document.querySelectorAll('.status-btn')
-    // removeButton = document.querySelectorAll('.remove-btn')
-    // addBtnFunction()
     console.log(library)
-    
 }
 
 function addBookTile(){
@@ -143,41 +145,19 @@ function addBookTile(){
     addBookTxt.setAttribute('id','add-book-txt')
     addBookTxt.textContent = 'Add Book'
 
-    // const addBookBtn = document.createElement('button')
-    // addBookBtn.classList.add("add-new-book")
-    // addBookBtn.textContent = "Add New Book"
     plusIcon.appendChild(plusImg)
     bookTile.appendChild(plusIcon)
     bookTile.appendChild(addBookTxt)
     libraryContainer.appendChild(bookTile)
 
-
     bookTile.addEventListener('click',function(e){
+        toggleModal()
         console.log(e);
     })
-    // bookTile.appendChild(addBookBtn)
 }
 
-
-const jjk = new Book('Jujutsu Kaisen','Gege', 200, 'done')
-const got = new Book('Game of Thrones','Jon Snow',600,'not done')
-const aot = new Book('Attack on Titan','Eren',150,'not done')
-const aots2 = new Book('Attack on Titan Season 2','Eren',150,'not done')
-
-
-checkLibrary(myLibrary)
 addBookTile()
 addBookToLibrary(jjk)
 addBookToLibrary(got)
 addBookToLibrary(aot)
-addBookToLibrary(aots2)
 checkLibrary(myLibrary)
-
-
-
-
-
-
-// for (let i in myLibrary){
-//     console.log(myLibrary[i].author);
-// }

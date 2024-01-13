@@ -18,8 +18,9 @@
     --primary: #b87148;
     --secondary: #dfb59c;
     --accent: #d58d63;
-    --btn-green:#22c55e;
-    --btn-red:#ef4444;
+    --btn-green:#3bd172;
+    --btn-red:#eb6161;
+    --btn-remove:#d3d3d3;
 
 
     --text-filter: invert(99%) sepia(0%) saturate(5792%) hue-rotate(317deg) brightness(129%) contrast(82%);
@@ -33,24 +34,97 @@ body{
 header{
     /* position */
     display: flex;
+    flex-wrap: wrap;
     height: 100px;
     background-color: var(--accent);
-}   
+    padding: 12px 62px;
+    justify-content: space-between;
+    box-shadow: 0 0 1rem 0 rgb(124, 124, 124);
+    align-items: center;
+}
+.left{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--background);
+    
+}
+.left img{
+    height: 64px;
+}
+
+.right{
+    margin-right: 64px;
+    display: flex;
+    gap: 32px;
+}
+.right button{
+    width: 140px;
+    padding: 12px;
+
+    font-size: 1.1rem;
+    background-color: var(--background);
+
+    border: none;
+    border-radius: 20px;
+    
+}
 
 main{
 }   
 
 .library-container{
-    padding: 32px 16vw;
+    padding: 64px 14vw;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,280px));
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
     grid-gap: 48px;
 }
 
+.actions{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.status-btn, .remove-btn{
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    
+}
+.read{
+    background-color: var(--btn-green);
+}
+.not-read{
+    background-color: var(--btn-red);
+}
+.remove-btn{
+    background-color: var(--btn-remove);
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+}
+.description>h3, .description>p{
+    font-size: 1.3rem;
+}
+.book{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+}
 .tile{
-    border: 1px red solid;
+    /* border: 1px red solid; */
+    border-radius: 12px;
     padding: 24px;
-    height: 300px;
+    background-color: var(--tile-color);
+    box-shadow: 0 0 0.5rem 0 rgb(168, 168, 168);
 }
 
 
@@ -63,7 +137,7 @@ main{
     gap: 12px;
 }
 #plus-svg{
-    width: 80%;
+    width: 70%;
     filter: var(--svg-filter-2);
     opacity: 50%;
 }
@@ -124,6 +198,10 @@ main{
     font-size: 1.2rem;
     background-color: var(--btn-green);
 }
+.submit-btn:active,.status-btn:active{
+    transform: scale(0.95);
+}
+
 .modal {
     position: absolute;
     top: 50%;
@@ -140,11 +218,11 @@ main{
     transition: 0.2s ease-in-out;
 }
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.192);
     backdrop-filter: blur(2px);
     z-index: 5;
