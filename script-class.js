@@ -9,6 +9,7 @@
     const addAuthor = document.querySelector('#author')
     const addPages = document.querySelector('#pages')
     const addRead = document.querySelector('#read-status')   
+    const removeBtnAll = document.querySelectorAll('.remove-btn')
 
     overlay.addEventListener('click',function(){
         toggleModal()
@@ -103,24 +104,20 @@
                             statusBtn.classList.remove("not-read")
                         }
                     })
+
+                    let bookData = library[i]
         
                     // REMOVE BUTTON
                     const removeBtn = document.createElement('button')
                     removeBtn.classList.add("remove-btn")
                     removeBtn.textContent = 'Remove'
-                    removeBtn.addEventListener('click',function(){//to be fixed
+                    removeBtn.addEventListener('click',function(e){//to be fixed
                         libraryContainer.removeChild(bookTile)
-
-
-                        console.log('THIS IS LIBRARY');
-                        console.log(`removed ${library[i].title}`);
-                        console.log(library.indexOf(library[i]));
-                        library.splice(library.indexOf(library[i])+1,1)
-
-
-                        console.log('AFTER REMOVE LIBRARY');
-                        console.log(library);
-        
+                        // console.log(library);
+                        // console.log(bookData);
+                        // console.log(library.indexOf(bookData));
+                        newLibrary.myLibrary.splice(library.indexOf(bookData),1)
+                        // console.log(library);
                     })
         
                     description.appendChild(bookTitle)
@@ -134,6 +131,7 @@
                     bookTile.appendChild(actions)
                 }  
             }
+
             console.log(library)
 
         }
@@ -173,6 +171,8 @@
     newLibrary.addBookToLibrary(got)
     newLibrary.addBookToLibrary(aot)
     newLibrary.checkLibrary(newLibrary.myLibrary)
+   
+
 
 })()
 
